@@ -1,0 +1,96 @@
+section {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+}
+main {
+    display: grid;
+    grid-template-rows: 40% 1fr;
+}
+
+.create-contact-headerDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.manage-label-icon-div {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 50%;
+    padding: 5px 5px;
+}
+
+#manage-label-icon {
+    fill: #4f93ed;
+}
+
+.create-contact-headerLine {
+    width: 80%;
+}
+
+.create-contact-inputDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.create-contact-input {
+    width: 35vw;
+    height: 4vh;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #e0e0e0;
+}
+
+.create-contact-input:focus {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #2979e2;
+    outline: none;
+}
+
+
+.create-contact-input::placeholder {
+    font-size: 14px;
+    line-height: 24px;
+    font: 400 Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    color: #9e9e9e;
+}
+
+.create-contact-input:focus::placeholder {
+    color: #2979e2;
+    font-size: 11px;
+    position: relative;
+    bottom: 8px;
+}
+
+#first-name-icon {
+    fill: #7e7e7e;
+}
+
+
+.flag-div {
+    background-color: yellow;
+    width: 4vw;
+    height: 4vh;
+    position: relative;
+    left: 2em;
+}
+
+.phone-input {
+    width: 31vw;
+    height: 4vh;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #e0e0e0;
+}
+
+.first-name-dropIcon {
+    width: 6vw;
+    height: 3vh;
+    fill: #b4b4b4;
+    margin-left: 1em;
+}
