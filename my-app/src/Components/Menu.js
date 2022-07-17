@@ -115,7 +115,7 @@ const activateModal = () => {
                 Merge and fix <span className="merge-no">1</span>
               </p>
             </li>
-            <hr className="line" />
+            <hr />
             <li className="contacts-div" onClick={toggleFunction}>
               <svg
                 id="contacts-icon"

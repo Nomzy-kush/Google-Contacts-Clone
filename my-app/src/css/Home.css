@@ -272,11 +272,11 @@
   left: 5em;
 }
 
-.line {
+hr {
   border-top: 1px solid #e0e0e0;
-  width: 260px;
+  border: none;
   margin: 5px 0px;
-}
+} 
 
 .create-contactModal {
   width: 12em;

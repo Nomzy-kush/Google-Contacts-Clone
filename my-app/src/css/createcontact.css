@@ -4,29 +4,59 @@ section {
 }
 main {
     display: grid;
-    grid-template-rows: 40% 1fr;
+    grid-template-rows: 30% 1fr;
+    margin: 0 30px;
 }
 
 .create-contact-headerDiv {
     display: flex;
     flex-direction: row;
+    gap: 40px;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.create-contact-headerDiv img {
+    height: 100%;
 }
 
 .manage-label-icon-div {
-    width: 32px;
-    height: 32px;
     background-color: #fff;
     border: 1px solid #dadce0;
     border-radius: 50%;
-    padding: 5px 5px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    margin: auto 0;
+}
+
+.manage-label-icon-div:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.manage-label-icon-div:hover {
+    background-color: #f6fafe;
+    color: #4378bc;
 }
 
 #manage-label-icon {
     fill: #4f93ed;
+    vertical-align: middle;
 }
 
-.create-contact-headerLine {
-    width: 80%;
+hr {
+    border-top: 1px solid #e0e0e0;
+    width: 100%;
+    height: 3px;
+}
+
+.main-inputDiv {
+    background: green;
+    height: 100%;
+    border: 1px solid #000;
 }
 
 .create-contact-inputDiv {
@@ -35,8 +65,8 @@ main {
 }
 
 .create-contact-input {
-    width: 35vw;
-    height: 4vh;
+    /* width: 35vw;
+    height: 4vh; */
     border-top: none;
     border-left: none;
     border-right: none;
