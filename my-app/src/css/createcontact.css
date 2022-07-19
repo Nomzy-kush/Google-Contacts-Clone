@@ -47,30 +47,53 @@ main {
     vertical-align: middle;
 }
 
-hr {
-    border-top: 1px solid #e0e0e0;
-    width: 100%;
-    height: 3px;
+.save-button {
+    background: #e7e8e8;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 10%;
+    margin-top: 10em;
+    padding: 1em 2em;
+    border-radius: 5px;
 }
 
+
 .main-inputDiv {
-    background: green;
+    display: grid;
     height: 100%;
-    border: 1px solid #000;
+    margin: 1em 4em;
 }
 
 .create-contact-inputDiv {
+    display: grid;
+    grid-template-columns: 5% 55% 1fr;
+    align-items: center; 
+}
+
+.phone-inputDiv {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .create-contact-input {
-    /* width: 35vw;
-    height: 4vh; */
+    width: 35vw;
+    height: 4vh;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom-color: #e0e0e0;
+    margin: 1em 0;
+}
+
+.birthday-input {
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+.phone-input {
+    width: 25.5vw;
 }
 
 .create-contact-input:focus {
@@ -109,18 +132,17 @@ hr {
     left: 2em;
 }
 
-.phone-input {
-    width: 31vw;
-    height: 4vh;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom-color: #e0e0e0;
-}
-
 .first-name-dropIcon {
     width: 6vw;
     height: 3vh;
     fill: #b4b4b4;
     margin-left: 1em;
+}
+
+
+
+.birth-date {
+    font-size: 10px;
+    color: #c8c8c9;
+    margin: 0;
 }
