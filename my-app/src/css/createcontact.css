@@ -1,8 +1,9 @@
-section {
+.create-contact-section {
     display: grid;
     grid-template-columns: 20% 1fr;
 }
-main {
+
+.create-contact-main {
     display: grid;
     grid-template-rows: 30% 1fr;
     margin: 0 30px;

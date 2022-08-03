@@ -8,58 +8,79 @@ import 'react-phone-number-input/style.css'
 
 
 
+
+
+
 const CreateContact = () => {
 
   const [data, setData] = useState()
   const [countryCode, setCountryCode] = useState()
   const [error, setError] = useState()
+  const [inputText, setInputText] = useState('');
+  const [contacts, setContacts] = useState([]);
 
-  useEffect(() => {
-    fetch('http://api.worldbank.org/v2/country/?format=json')
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      }
-      console.log(response)
-    })
 
-    .then(data => {
-      setData(data)
-    })
 
-    .catch(error => {
-      console.error('Error fetching data: ', error);
-      setError(error)
-    })
+  const saveButton = document.querySelector('.save-button');
 
-    .finally(() => {
-      console.log(data);
-    })
-  }, [])
+  const inputHandler = (e) => {
 
-  const handleChangePhone = (e) => {
-    let phone = e.target.value
-    let countryPhone = ["+123", "+234", "+1", ""]
-    let countryCode1 = phone.slice(0, 2)
-    let countryCode2 = phone.slice(0, 3)
-    let countryCode3 = phone.slice(0, 4)
-    let newCountryCode = ""
+  setInputText(e.target.value);
 
-    if(countryPhone.includes(countryCode1)) {
-      newCountryCode = countryCode1
-    }
-    if(countryPhone.includes(countryCode2)) {
-      newCountryCode = countryCode2
-    }
-    if(countryPhone.includes(countryCode3)) {
-      newCountryCode = countryCode3
-    }
+  saveButton.style.backgroundColor = '#1b66ca';
+  saveButton.style.color = '#fff'
+}
 
-    if(newCountryCode) {
-      console.log(newCountryCode);
-    }
+ const saveContact = () => {
+  
+ }
 
-  }
+  // useEffect(() => {
+  //   fetch('http://api.worldbank.org/v2/country/?format=json')
+  //   .then(response => {
+  //     if (response.ok) {
+  //       return response.json()
+  //     }
+  //     console.log(response)
+  //   })
+
+  //   .then(data => {
+  //     setData(data)
+  //   })
+
+  //   .catch(error => {
+  //     console.error('Error fetching data: ', error);
+  //     setError(error)
+  //   })
+
+  //   .finally(() => {
+  //     console.log(data);
+  //   })
+  // }, [])
+
+  // const handleChangePhone = (e) => {
+  //   let phone = e.target.value
+  //   let countryPhone = ["+123", "+234", "+1", ""]
+  //   let countryCode1 = phone.slice(0, 2)
+  //   let countryCode2 = phone.slice(0, 3)
+  //   let countryCode3 = phone.slice(0, 4)
+  //   let newCountryCode = ""
+
+  //   if(countryPhone.includes(countryCode1)) {
+  //     newCountryCode = countryCode1
+  //   }
+  //   if(countryPhone.includes(countryCode2)) {
+  //     newCountryCode = countryCode2
+  //   }
+  //   if(countryPhone.includes(countryCode3)) {
+  //     newCountryCode = countryCode3
+  //   }
+
+  //   if(newCountryCode) {
+  //     console.log(newCountryCode);
+  //   }
+
+  // }
   
   
   return (
@@ -67,16 +88,16 @@ const CreateContact = () => {
 
 
     <Navbar />
-    <section>
+    <section className="create-contact-section">
     <Menu />
-    <main>
+    <main className="create-contact-main">
     <aside className='create-contact-headerDiv'>
     <svg width="20" height="20" viewBox="0 0 24 24" class="NSy2Hd cdByRd RTiFqe undefined"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
     <img src={contactPhoto} className='contact-photo' alt="" />
     <div className='manage-label-icon-div'>
     <svg id='manage-label-icon' width="20" height="20" viewBox="0 0 24 24" class="NSy2Hd cdByRd RTiFqe undefined"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path></svg>
     </div>
-    <button className="save-button">Save</button>
+    <button className="save-button" onClick={saveContact}>Save</button>
     </aside>
 
 
@@ -86,7 +107,7 @@ const CreateContact = () => {
          <svg id='first-name-icon' width="20" height="20" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 9c2.7 0 5.8 1.29 6 2v1H6v-.99c.2-.72 3.3-2.01 6-2.01m0-11C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></svg>
          </div>
          <div>
-         <input className='create-contact-input' type="text" placeholder='First name' />
+         <input className='create-contact-input' type="text" placeholder='First name' value={inputText} onChange={inputHandler} />
          </div>
          <div>
          <svg width="20" height="20" viewBox="0 0 24 24" class="NSy2Hd cdByRd RTiFqe undefined"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>

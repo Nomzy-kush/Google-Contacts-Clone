@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import GoogleLogo from '../Images/google-logo.jpg'
 import '../css/Home.css'
+import { Link } from 'react-router-dom'
 
 const Menu = () => {
 
@@ -44,6 +45,7 @@ const activateModal = () => {
   return (
     <>
       <article className="show-hideDiv">
+        <Link to='/createcontact' style={{ textDecoration: 'none' }}>
         <aside>
           <div className="create-contactModal">
             <svg className='modal-icon' width="20" height="20" viewBox="0 0 24 24">
@@ -53,6 +55,7 @@ const activateModal = () => {
             <p className="create-a-contact">Create a Contact</p>
           </div>
         </aside>
+        </Link>
 
         <div className="create-contactDiv">
           <button className="create-contact" onClick={activateModal}>
@@ -77,6 +80,7 @@ const activateModal = () => {
           </div>
 
           <ul className="contacts-overallDiv">
+            <Link to='/contacts' style={{ textDecoration: 'none' }}>
             <li className="contacts-div">
               <svg
                 id="contacts-icon"
@@ -89,6 +93,7 @@ const activateModal = () => {
               </svg>
               <p className="contacts">Contacts</p>
             </li>
+            </Link>
             <li className="contacts-div">
               <svg
                 id="contacts-icon"

@@ -1,7 +1,7 @@
 import React from 'react'
-// import Navbar from './Navbar'
-// import Menu from './Menu'
 import CreateContact from './CreateContact'
+import Contacts from './Contacts'
+import { Routes, Route, Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -10,9 +10,13 @@ const Home = () => {
 
   return (
     <>
-    {/* <Navbar />
-    <Menu /> */}
-    <CreateContact />
+
+    <Routes>
+      <Route path='/' element={<Contacts />}></Route>
+      <Route path='/createcontact' element={<CreateContact />}/>
+
+      <Route path='/contacts' element={<Contacts />} />
+    </Routes>
     </>  
   )
 }
