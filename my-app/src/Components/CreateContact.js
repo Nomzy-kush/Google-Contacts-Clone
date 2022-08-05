@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import contactPhoto from '../Images/contact-photo.jpg'
 import Navbar from './Navbar'
 import Menu from './Menu'
@@ -11,76 +11,74 @@ import 'react-phone-number-input/style.css'
 
 
 
-const CreateContact = () => {
-
-  const [data, setData] = useState()
-  const [countryCode, setCountryCode] = useState()
-  const [error, setError] = useState()
-  const [inputText, setInputText] = useState('');
-  const [contacts, setContacts] = useState([]);
-
+const CreateContact = ({firstName, setFirstName, surname, setSurname, email, setEmail, jobTitle, setJobTitle, contacts, setContacts}) => {
 
 
   const saveButton = document.querySelector('.save-button');
 
-  const inputHandler = (e) => {
-
-  setInputText(e.target.value);
-
+  const firstNameHandler = (e) => {
+  setFirstName(e.target.value);
   saveButton.style.backgroundColor = '#1b66ca';
   saveButton.style.color = '#fff'
 }
 
- const saveContact = () => {
+const surnameHandler = (e) => {
+  setSurname(e.target.value);
+  saveButton.style.backgroundColor = '#1b66ca';
+  saveButton.style.color = '#fff'
+}
+
+const emailHandler = (e) => {
+  setEmail(e.target.value);
+  saveButton.style.backgroundColor = '#1b66ca';
+  saveButton.style.color = '#fff'
+}
+
+const jobTitleHandler = (e) => {
+  setJobTitle(e.target.value);
+  saveButton.style.backgroundColor = '#1b66ca';
+  saveButton.style.color = '#fff'
+}
+
+ const saveContact = (e) => {
+  e.preventDefault()
+
+  setContacts(
+    ...contacts, {id: Math.floor(Math.random() * 10000), firstName: firstName, email: email, jobTitle: jobTitle}
+  )
+
+  setFirstName('')
+  setSurname('')
+  setEmail('')
+  setJobTitle('')
   
+  console.log(contacts);
  }
 
-  // useEffect(() => {
-  //   fetch('http://api.worldbank.org/v2/country/?format=json')
-  //   .then(response => {
-  //     if (response.ok) {
-  //       return response.json()
-  //     }
-  //     console.log(response)
-  //   })
 
-  //   .then(data => {
-  //     setData(data)
-  //   })
+  const handleChangePhone = (e) => {
+    let phone = e.target.value
+    let countryPhone = ["+123", "+234", "+1", ""]
+    let countryCode1 = phone.slice(0, 2)
+    let countryCode2 = phone.slice(0, 3)
+    let countryCode3 = phone.slice(0, 4)
+    let newCountryCode = ""
 
-  //   .catch(error => {
-  //     console.error('Error fetching data: ', error);
-  //     setError(error)
-  //   })
+    if(countryPhone.includes(countryCode1)) {
+      newCountryCode = countryCode1
+    }
+    if(countryPhone.includes(countryCode2)) {
+      newCountryCode = countryCode2
+    }
+    if(countryPhone.includes(countryCode3)) {
+      newCountryCode = countryCode3
+    }
 
-  //   .finally(() => {
-  //     console.log(data);
-  //   })
-  // }, [])
+    if(newCountryCode) {
+      console.log(newCountryCode);
+    }
 
-  // const handleChangePhone = (e) => {
-  //   let phone = e.target.value
-  //   let countryPhone = ["+123", "+234", "+1", ""]
-  //   let countryCode1 = phone.slice(0, 2)
-  //   let countryCode2 = phone.slice(0, 3)
-  //   let countryCode3 = phone.slice(0, 4)
-  //   let newCountryCode = ""
-
-  //   if(countryPhone.includes(countryCode1)) {
-  //     newCountryCode = countryCode1
-  //   }
-  //   if(countryPhone.includes(countryCode2)) {
-  //     newCountryCode = countryCode2
-  //   }
-  //   if(countryPhone.includes(countryCode3)) {
-  //     newCountryCode = countryCode3
-  //   }
-
-  //   if(newCountryCode) {
-  //     console.log(newCountryCode);
-  //   }
-
-  // }
+  }
   
   
   return (
@@ -107,7 +105,7 @@ const CreateContact = () => {
          <svg id='first-name-icon' width="20" height="20" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 9c2.7 0 5.8 1.29 6 2v1H6v-.99c.2-.72 3.3-2.01 6-2.01m0-11C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></svg>
          </div>
          <div>
-         <input className='create-contact-input' type="text" placeholder='First name' value={inputText} onChange={inputHandler} />
+         <input className='create-contact-input' type="text" placeholder='First name' value={firstName} onChange={firstNameHandler} />
          </div>
          <div>
          <svg width="20" height="20" viewBox="0 0 24 24" class="NSy2Hd cdByRd RTiFqe undefined"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
@@ -116,7 +114,7 @@ const CreateContact = () => {
 
       <div className='create-contact-inputDiv input-div2'>
         <div></div>
-         <input className='create-contact-input' type="text" placeholder='Surname' />
+         <input className='create-contact-input' type="text" placeholder='Surname' value={surname} onChange={surnameHandler} />
          <div></div>
       </div>
 
@@ -134,7 +132,7 @@ const CreateContact = () => {
 
       <div className='create-contact-inputDiv input-div4'>
         <div></div>
-         <input className='create-contact-input' type="text" placeholder='Job title' />
+         <input className='create-contact-input' type="text" placeholder='Job title' value={jobTitle} onChange={jobTitleHandler} />
          <div></div>
       </div>
 
@@ -143,7 +141,7 @@ const CreateContact = () => {
          <svg id='first-name-icon' width="20" height="20" viewBox="0 0 24 24" class="NSy2Hd cdByRd RTiFqe undefined"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
          </div>
          <div>
-         <input className='create-contact-input' type="text" placeholder='Email' />
+         <input className='create-contact-input' type="text" placeholder='Email' value={email} onChange={emailHandler} />
          </div>
          <div>
          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
@@ -163,7 +161,6 @@ const CreateContact = () => {
       <PhoneInput
       className='create-contact-input phone-input'
       placeholder='Phone'
-      value={data}
       onChange={(e) => handleChangePhone(e)}
       />
       </div>

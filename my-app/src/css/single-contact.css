@@ -1,0 +1,38 @@
+.contacts-repr {
+    background: yellow;
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact-icon-div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+}
+
+.contacts-repr img {
+    border-radius: 50%;
+}
+
+
+.contacts-repr svg {
+    position: relative;
+    left: 50%;
+    fill: #6b6c6e;
+    visibility: hidden;
+}
+
+.contacts-repr h3 {
+    margin-left: 2em;
+    font-size: 15px;
+    color: #6b6c6e;
+}
+
+.contacts-repr p {
+    margin-left: 35%;
+    color: #6b6c6e;
+}

@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import CreateContact from './CreateContact'
 import Contacts from './Contacts'
-import { Routes, Route, Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -10,13 +9,7 @@ const Home = () => {
 
   return (
     <>
-
-    <Routes>
-      <Route path='/' element={<Contacts />}></Route>
-      <Route path='/createcontact' element={<CreateContact />}/>
-
-      <Route path='/contacts' element={<Contacts />} />
-    </Routes>
+    
     </>  
   )
 }
